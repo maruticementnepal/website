@@ -1,7 +1,7 @@
 
-  # Cement Manufacturing Website
+  # Replica website creation
 
-  This is a code bundle for Cement Manufacturing Website. The original project is available at https://www.figma.com/design/F6xeqBYIQJRjuOlXFgm2IC/Cement-Manufacturing-Website.
+  This is a code bundle for Replica website creation. The original project is available at https://www.figma.com/design/ajHmc8FeFVOyb9q9JRmj4T/Replica-website-creation.
 
   ## Running the code
 

@@ -4,7 +4,7 @@ import {
   Menu, X, ChevronDown, ArrowRight, Phone, Mail, MapPin,
   Award, Factory, Leaf, Mountain, Shield, Heart,
   Users, Building2, CheckCircle, Calendar,
-  Download, Zap, Facebook, Youtube, Linkedin, Twitter
+  Download, Zap, Facebook, Youtube, Briefcase
 } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -12,7 +12,7 @@ import {
 type Page =
   | "home" | "about" | "timeline" | "leadership"
   | "projects" | "certificates" | "investor"
-  | "csr" | "blog" | "contact" | "ipo";
+  | "csr" | "blog" | "career" | "contact" | "ipo";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -34,6 +34,7 @@ const NAV_ITEMS: { label: string; page: Page; children?: { label: string; page: 
   { label: "Investor Relations", page: "investor" },
   { label: "CSR Activities", page: "csr" },
   { label: "Blogs", page: "blog" },
+  { label: "Career", page: "career" },
   { label: "Contact Us", page: "contact" },
   { label: "IPO Allotment Result", page: "ipo" },
 ];
@@ -72,22 +73,23 @@ const STATS = [
   { number: "100+", label: "कर्मचारी", sub: "Employees" },
 ];
 
+// Projects: all 4 names are real (from maruticements.com). Year, location district, type & photos are estimated.
 const PROJECTS = [
   { name: "CE Construction Grande Tower", location: "काठमाडौं", type: "Commercial", year: "2023", imgId: "1486325212027-8081e485255e" },
   { name: "Himal Hydropower", location: "इलाम", type: "Infrastructure", year: "2022", imgId: "1581091226825-a6a2a5aee158" },
   { name: "Classic Developers, Satdobato", location: "ललितपुर", type: "Residential", year: "2022", imgId: "1545324418-cc1a3fa10c00" },
   { name: "Vegas City", location: "भक्तपुर", type: "Commercial", year: "2021", imgId: "1503387762-592deb58ef4e" },
-  { name: "Birgunj Industrial Park", location: "बीरगन्ज", type: "Industrial", year: "2021", imgId: "1504307651254-35680f356dfd" },
-  { name: "Koshi Bridge Expansion", location: "सुनसरी", type: "Infrastructure", year: "2020", imgId: "1568454537842-4cc0a96f9078" },
 ];
 
+// NEWS: titles and dates are real (from maruticements.com/news). Nepali translations and excerpts are added for bilingual presentation.
 const BLOGS = [
-  { title: "सिमेन्ट छान्दा के हेर्ने?", titleEn: "What to Look for When Choosing Cement", date: "Aug 15, 2025", category: "Guide", excerpt: "राम्रो निर्माण सामग्री छान्नु भनेको बलियो घर बनाउनु हो। OPC र PPC बीचको भिन्नता बुझौं।", imgId: "1504307651254-35680f356dfd" },
-  { title: "OPC vs PPC: कुन राम्रो?", titleEn: "OPC vs PPC: Which is Better?", date: "Jul 22, 2025", category: "Technical", excerpt: "दुई प्रकारका सिमेन्टका फाइदाबेफाइदाहरू र कहाँ कुन प्रयोग गर्ने भन्ने बुझौं।", imgId: "1581091226825-a6a2a5aee158" },
-  { title: "दिगो निर्माणको प्रतिबद्धता", titleEn: "Our Commitment to Sustainable Construction", date: "Jun 10, 2025", category: "CSR", excerpt: "वातावरण संरक्षण र आधुनिक निर्माण एकसाथ — मारुती सिमेन्टको हरियो संकल्प।", imgId: "1545324418-cc1a3fa10c00" },
-  { title: "भूकम्प प्रतिरोधी निर्माण", titleEn: "Earthquake-Resistant Construction Tips", date: "May 5, 2025", category: "Technical", excerpt: "नेपालको भूकम्पीय जोखिम मध्यनजर गर्दै कसरी बलियो घर बनाउने।", imgId: "1503387762-592deb58ef4e" },
-  { title: "मारुती सिमेन्टको यात्रा", titleEn: "The Journey of Maruti Cements", date: "Apr 1, 2025", category: "Company", excerpt: "२०१० देखि आजसम्म — विश्वासको एक दशकको कथा।", imgId: "1486325212027-8081e485255e" },
-  { title: "गुणस्तर नियन्त्रण प्रक्रिया", titleEn: "Our Quality Control Process", date: "Mar 12, 2025", category: "Technical", excerpt: "ISO मानकहरू पालना गर्दै हरेक थैलो सिमेन्टमा उत्कृष्ट गुणस्तर कसरी सुनिश्चित गर्छौं।", imgId: "1568454537842-4cc0a96f9078" },
+  { title: "Nepal APF School Educational Excursion 2025!", titleEn: "Nepal APF School Educational Excursion 2025", date: "Feb 8, 2026", category: "News", excerpt: "कारखाना भ्रमण कार्यक्रम सिरहामा सञ्चालन भयो। शिक्षक तथा APF विद्यार्थीहरूले मारुती सिमेन्ट प्लान्टको शैक्षिक भ्रमण गरे।", imgId: "1504307651254-35680f356dfd" },
+  { title: "Educational Experience at the Maruti Cement Factory", titleEn: "Educational Experience at Maruti Cement Factory", date: "Feb 8, 2026", category: "Education", excerpt: "Buddha Memorial Secondary Boarding School का विद्यार्थीहरूले कारखाना भ्रमण गरे। थिम: 'Turning limestone into strength'।", imgId: "1581091226825-a6a2a5aee158" },
+  { title: "Dealer Meetup Program 2082 Highlights!", titleEn: "Dealer Meetup Program 2082 Highlights", date: "Feb 6, 2026", category: "Business", excerpt: "मारुती सिमेन्टका प्राविधिक विशेषज्ञहरूको भेटघाटका अविस्मरणीय क्षणहरूको झलक।", imgId: "1545324418-cc1a3fa10c00" },
+  { title: "Maruti Cement Distributes Relief for Earthquake", titleEn: "Earthquake Relief Distribution", date: "May 8, 2015", category: "CSR", excerpt: "भूकम्प पीडितहरूलाई राहत सामग्री वितरण — मारुती सिमेन्टको सामाजिक उत्तरदायित्व।", imgId: "1503387762-592deb58ef4e" },
+  { title: "Road Cleaning Programme Conducted", titleEn: "Road Cleaning Programme with NEA", date: "—", category: "CSR", excerpt: "NEA र मारुती सिमेन्टको संयुक्त सडक सफाइ अभियान सफलतापूर्वक सञ्चालन भयो।", imgId: "1486325212027-8081e485255e" },
+  { title: "Tree Plantation Program for Engineer's Day 2071", titleEn: "Tree Plantation — Engineer's Day 2071", date: "—", category: "CSR", excerpt: "इन्जिनियर दिवस २०७१ को अवसरमा मारुती सिमेन्टको साझेदारीमा वृक्षारोपण कार्यक्रम।", imgId: "1568454537842-4cc0a96f9078" },
+  { title: "Maruti Cements Authorized to Use NS Certification Mark", titleEn: "NS Certification Mark Awarded", date: "—", category: "Certification", excerpt: "नेपाल मानक (NS) प्रमाणपत्र चिह्न प्रयोग गर्न अधिकार प्राप्त — गुणस्तरको थप प्रमाण।", imgId: "1486325212027-8081e485255e" },
 ];
 
 const TIMELINE_EVENTS = [
@@ -108,11 +110,12 @@ const LEADERSHIP = [
   { name: "Sita Devi Jha", role: "Marketing Director", roleNp: "विपणन निर्देशक", initial: "S" },
 ];
 
+// CSR: all 4 activities are real events from maruticements.com/news. Years marked "—" are undated on the source site.
 const CSR_ACTIVITIES = [
-  { year: "2015", title: "भूकम्प राहत", titleEn: "Earthquake Relief", desc: "२०७२ सालको भूकम्प पीडितहरूलाई सिमेन्ट र राहत सामग्री वितरण।", Icon: Heart },
-  { year: "2022", title: "शिक्षा सहयोग", titleEn: "Education Support", desc: "सिरहा जिल्लाका स्थानीय विद्यालयहरूमा छात्रवृत्ति र पुस्तकालय निर्माण।", Icon: Users },
-  { year: "2023", title: "वातावरण संरक्षण", titleEn: "Environmental Protection", desc: "वृक्षारोपण अभियान र कारखाना क्षेत्रको खोला संरक्षण कार्यक्रम।", Icon: Leaf },
-  { year: "2024", title: "स्वास्थ्य शिविर", titleEn: "Free Health Camps", desc: "वडा स्तरमा निःशुल्क स्वास्थ्य परीक्षण र औषधि वितरण शिविर।", Icon: Shield },
+  { year: "2015", title: "भूकम्प राहत वितरण", titleEn: "Earthquake Relief Distribution", desc: "भूकम्प पीडितहरूलाई राहत सामग्री वितरण — Maruti Cement distributes relief for earthquake.", Icon: Heart },
+  { year: "२०७१", title: "वृक्षारोपण कार्यक्रम", titleEn: "Tree Plantation — Engineer's Day 2071", desc: "इन्जिनियर दिवस २०७१ मा मारुती सिमेन्टको साझेदारीमा वृक्षारोपण कार्यक्रम सञ्चालन।", Icon: Leaf },
+  { year: "—", title: "सडक सफाइ अभियान", titleEn: "Road Cleaning Programme", desc: "NEA र मारुती सिमेन्टको संयुक्त सडक सफाइ अभियान सफलतापूर्वक सञ्चालन भयो।", Icon: Users },
+  { year: "—", title: "NS प्रमाणपत्र उपलब्धि", titleEn: "NS Certification Mark Awarded", desc: "नेपाल मानक (NS) प्रमाणपत्र चिह्न प्रयोग गर्न अधिकृत — Maruti Cements authorized to use NS Certification Mark.", Icon: Award },
 ];
 
 // ─── Intro Screen ─────────────────────────────────────────────────────────────
@@ -916,14 +919,20 @@ function AboutPage() {
               <div className="p-8" style={{ backgroundColor: "#0f1923" }}>
                 <div className="mb-6">
                   <h3 className="font-bold mb-2 text-lg" style={{ fontFamily: FONT_DISPLAY, color: "#d4a017" }}>Vision / दृष्टिकोण</h3>
-                  <p className="text-sm leading-relaxed" style={{ fontFamily: FONT_NEPALI, color: "rgba(255,255,255,0.65)" }}>
-                    नेपालको पूर्वाधार विकासमा अग्रणी र प्रभावशाली शक्ति बन्नु।
+                  <p className="text-sm leading-relaxed mb-2" style={{ fontFamily: FONT_BODY, color: "rgba(255,255,255,0.75)", fontStyle: "italic" }}>
+                    "...maintain our leadership position in the cement industry and transform ourselves as a dominant player in the infrastructure sector."
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ fontFamily: FONT_NEPALI, color: "rgba(255,255,255,0.5)" }}>
+                    सिमेन्ट उद्योगमा नेतृत्व कायम राख्दै पूर्वाधार क्षेत्रमा प्रभावशाली शक्ति बन्ने।
                   </p>
                 </div>
                 <div>
                   <h3 className="font-bold mb-2 text-lg" style={{ fontFamily: FONT_DISPLAY, color: "#d4a017" }}>Mission / मिशन</h3>
-                  <p className="text-sm leading-relaxed" style={{ fontFamily: FONT_NEPALI, color: "rgba(255,255,255,0.65)" }}>
-                    ग्राहक मूल्य र कर्मचारी सुरक्षामा उद्योगको नेता बन्दै दिगो नेपाल बनाउन योगदान गर्नु।
+                  <p className="text-sm leading-relaxed mb-2" style={{ fontFamily: FONT_BODY, color: "rgba(255,255,255,0.75)", fontStyle: "italic" }}>
+                    "...committed to being the industry leader in providing outstanding value to our customers."
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ fontFamily: FONT_NEPALI, color: "rgba(255,255,255,0.5)" }}>
+                    ग्राहकहरूलाई उत्कृष्ट मूल्य प्रदान गर्नमा उद्योगको नेता बन्ने।
                   </p>
                 </div>
               </div>
@@ -1361,7 +1370,7 @@ function ContactPage() {
                 },
                 {
                   Icon: Mail, label: "Email",
-                  lines: ["info@maruticements.com", "info.ktm@maruticements.com"],
+                  lines: ["info@maruticements.com", "ho.mis@maruticements.com", "hr@maruticements.com", "info.ktm@maruticements.com"],
                   color: "#d4a017",
                 },
               ].map(({ Icon, label, lines, color }, i) => (
@@ -1570,6 +1579,147 @@ function IPOPage() {
   );
 }
 
+// ─── Career Page ─────────────────────────────────────────────────────────────
+
+// Job openings: titles, experience requirements, and apply URL are real (from maruticements.com/career).
+const JOB_OPENINGS = [
+  {
+    title: "Trainee Chemist",
+    titleNp: "प्रशिक्षु रसायनशास्त्री",
+    experience: "5 years of work experience in the related field",
+    dept: "Laboratory / Quality Control",
+    type: "Full Time",
+  },
+  {
+    title: "HR Manager",
+    titleNp: "HR व्यवस्थापक",
+    experience: "5 years of work experience in the related field",
+    dept: "Human Resources",
+    type: "Full Time",
+  },
+  {
+    title: "Mechanical Engineer",
+    titleNp: "मेकानिकल इन्जिनियर",
+    experience: "5 years of relevant experience in manufacturing industries",
+    dept: "Engineering / Plant",
+    type: "Full Time",
+  },
+  {
+    title: "Electrical Engineer",
+    titleNp: "इलेक्ट्रिकल इन्जिनियर",
+    experience: "5 years of relevant experience in manufacturing industries",
+    dept: "Engineering / Plant",
+    type: "Full Time",
+  },
+];
+
+function CareerPage() {
+  return (
+    <>
+      <PageHero title="Career" titleNp="करियर" subtitle="Join Nepal's Pioneer Greenfield Cement Plant" />
+      <section className="py-20 bg-white">
+        <div className="max-w-[1320px] mx-auto px-4 md:px-8">
+
+          {/* Intro */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+            <div className="lg:col-span-2">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="h-px w-8" style={{ backgroundColor: "#b71c1c" }} />
+                <span className="text-xs font-bold tracking-[0.4em] uppercase" style={{ fontFamily: FONT_DISPLAY, color: "#b71c1c" }}>Current Openings</span>
+              </div>
+              <h2 className="font-bold mb-4" style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(1.8rem, 3vw, 2.4rem)", color: "#0f1923" }}>
+                हाम्रो टोलीमा <span style={{ color: "#b71c1c" }}>सामेल हुनुहोस्</span>
+              </h2>
+              <p className="leading-relaxed mb-3" style={{ fontFamily: FONT_NEPALI, color: "#4b5563" }}>
+                MCL का कर्मचारीहरू नै हाम्रो प्लान्टका धेरै उपलब्धिहरूका पछाडिको प्रेरणाशक्ति हुन्।
+              </p>
+              <p className="text-sm leading-relaxed" style={{ fontFamily: FONT_BODY, color: "#6b7280" }}>
+                MCL&apos;s employees are the driving force behind the plant&apos;s many achievements. We foster a culture that is creative, strategic, and entrepreneurial. Join us at Nepal&apos;s first private sector Greenfield Cement Plant.
+              </p>
+            </div>
+            <div className="p-8" style={{ backgroundColor: "#0f1923" }}>
+              <h3 className="font-bold text-lg mb-4" style={{ fontFamily: FONT_DISPLAY, color: "#d4a017" }}>How to Apply</h3>
+              <p className="text-sm leading-relaxed mb-5" style={{ fontFamily: FONT_NEPALI, color: "rgba(255,255,255,0.65)" }}>
+                आवेदन दिनको लागि तलको ठेगानामा सम्पर्क गर्नुहोस् वा हाम्रो अनलाइन फारम भर्नुहोस्।
+              </p>
+              <div className="space-y-3 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
+                <div className="flex items-center gap-2">
+                  <Mail size={13} style={{ color: "#d4a017", flexShrink: 0 }} />
+                  <span style={{ fontFamily: FONT_BODY }}>hr@maruticements.com</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone size={13} style={{ color: "#d4a017", flexShrink: 0 }} />
+                  <span style={{ fontFamily: FONT_BODY }}>021-590204/205/206</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <MapPin size={13} className="mt-0.5" style={{ color: "#d4a017", flexShrink: 0 }} />
+                  <span style={{ fontFamily: FONT_BODY }}>Chandraudaipur, Siraha, Nepal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Job cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {JOB_OPENINGS.map((job, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08 }}
+                className="border-2 p-8 transition-all duration-300"
+                style={{ borderColor: "#e5e7eb" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#b71c1c"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#e5e7eb"; }}
+              >
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <div className="flex items-center justify-center flex-shrink-0" style={{ width: 48, height: 48, backgroundColor: "#b71c1c" }}>
+                    <Briefcase size={22} className="text-white" />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 mt-1" style={{ fontFamily: FONT_DISPLAY, color: "#d4a017", backgroundColor: "rgba(212,160,23,0.1)", border: "1px solid rgba(212,160,23,0.3)" }}>
+                    {job.type}
+                  </span>
+                </div>
+                <h3 className="font-bold text-xl mb-0.5" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>{job.title}</h3>
+                <p className="text-sm mb-4" style={{ fontFamily: FONT_NEPALI, color: "#9ca3af" }}>{job.titleNp}</p>
+
+                <div className="space-y-2 mb-6">
+                  <div className="flex items-start gap-2 text-sm" style={{ color: "#4b5563" }}>
+                    <Building2 size={13} className="mt-0.5 flex-shrink-0" style={{ color: "#b71c1c" }} />
+                    <span style={{ fontFamily: FONT_BODY }}>{job.dept}</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm" style={{ color: "#4b5563" }}>
+                    <CheckCircle size={13} className="mt-0.5 flex-shrink-0" style={{ color: "#b71c1c" }} />
+                    <span style={{ fontFamily: FONT_BODY }}>{job.experience}</span>
+                  </div>
+                </div>
+
+                <button
+                  className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-6 py-3 text-white transition-all"
+                  style={{ fontFamily: FONT_DISPLAY, backgroundColor: "#b71c1c" }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#9b1515"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#b71c1c"; }}
+                >
+                  Apply Now <ArrowRight size={13} />
+                </button>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* General vacancy note */}
+          <div className="mt-10 p-8 border-l-4" style={{ borderColor: "#d4a017", backgroundColor: "#f8f8f8" }}>
+            <p className="font-bold mb-1" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>General Vacancy / सामान्य रिक्तता</p>
+            <p className="text-sm leading-relaxed" style={{ fontFamily: FONT_NEPALI, color: "#6b7280" }}>
+              माथि उल्लेख नभएका पदहरूको लागि पनि सक्षम उम्मेदवारहरूले आफ्नो CV सिधै <span style={{ color: "#b71c1c" }}>hr@maruticements.com</span> मा पठाउन सक्नुहुन्छ।
+            </p>
+          </div>
+
+        </div>
+      </section>
+    </>
+  );
+}
+
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
 function Footer({ navigate }: { navigate: (p: Page) => void }) {
@@ -1599,8 +1749,6 @@ function Footer({ navigate }: { navigate: (p: Page) => void }) {
               {[
                 { Icon: Facebook, label: "Facebook" },
                 { Icon: Youtube, label: "YouTube" },
-                { Icon: Linkedin, label: "LinkedIn" },
-                { Icon: Twitter, label: "Twitter" },
               ].map(({ Icon, label }) => (
                 <button
                   key={label}
@@ -1681,7 +1829,7 @@ function Footer({ navigate }: { navigate: (p: Page) => void }) {
       <div className="border-t px-4 md:px-8 py-5" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
         <div className="max-w-[1320px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs" style={{ fontFamily: FONT_DISPLAY, color: "rgba(255,255,255,0.25)" }}>
-            © 2026 Maruti Cements Ltd. All rights reserved.
+            Copyright © 2026 Maruti Cements. All Rights Reserved.
           </p>
           <p className="text-xs" style={{ fontFamily: FONT_NEPALI, color: "rgba(255,255,255,0.2)" }}>
             विश्वासको एक दशक — A Decade of Trust
@@ -1714,6 +1862,7 @@ export default function App() {
       case "investor": return <InvestorPage />;
       case "csr": return <CSRPage />;
       case "blog": return <BlogPage />;
+      case "career": return <CareerPage />;
       case "contact": return <ContactPage />;
       case "ipo": return <IPOPage />;
       default: return <HomePage navigate={navigate} />;

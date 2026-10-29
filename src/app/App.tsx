@@ -19,6 +19,7 @@ type Page =
 const FONT_DISPLAY = "'Rajdhani', sans-serif";
 const FONT_NEPALI = "'Noto Sans Devanagari', sans-serif";
 const FONT_BODY = "'Noto Sans', sans-serif";
+const MARUTI_ASSETS = `${import.meta.env.BASE_URL}maruti/`;
 
 const NAV_ITEMS: { label: string; page: Page; children?: { label: string; page: Page }[] }[] = [
   { label: "Home", page: "home" },
@@ -67,18 +68,104 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { number: "10+", label: "वर्षको अनुभव", sub: "Years of Experience" },
-  { number: "50K+", label: "सन्तुष्ट ग्राहक", sub: "Happy Customers" },
-  { number: "200+", label: "परियोजना पूरा", sub: "Projects Completed" },
-  { number: "100+", label: "कर्मचारी", sub: "Employees" },
+  { number: "20+", label: "वर्षको अनुभव", sub: "Years of Experience" },
+  { number: "1M+", label: "सन्तुष्ट ग्राहक", sub: "Happy Customers" },
+  { number: "1,000+", label: "परियोजना पूरा", sub: "Projects Completed" },
+  { number: "500+", label: "कर्मचारी", sub: "Employees" },
 ];
 
-// Projects: all 4 names are real (from maruticements.com). Year, location district, type & photos are estimated.
+// Project names and categories are supplied in the client brief. Location, year and project photography were not supplied.
 const PROJECTS = [
-  { name: "CE Construction Grande Tower", location: "काठमाडौं", type: "Commercial", year: "2023", imgId: "1486325212027-8081e485255e" },
-  { name: "Himal Hydropower", location: "इलाम", type: "Infrastructure", year: "2022", imgId: "1581091226825-a6a2a5aee158" },
-  { name: "Classic Developers, Satdobato", location: "ललितपुर", type: "Residential", year: "2022", imgId: "1545324418-cc1a3fa10c00" },
-  { name: "Vegas City", location: "भक्तपुर", type: "Commercial", year: "2021", imgId: "1503387762-592deb58ef4e" },
+  { name: "Varun Developers Pvt. Ltd.", type: "High-rise apartment", imgId: "1486325212027-8081e485255e" },
+  { name: "Clean Developers Pvt. Ltd.", type: "High-rise business complex", imgId: "1503387762-592deb58ef4e" },
+  { name: "Down Town Housing", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Shangrila Housing Pvt. Ltd.", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Sunrise City Homes", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "United Modi Hydropower", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Ankhu Khola Hydropower (Ramechhap Shepa Construction)", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Laughing Buddha Power Company", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Oriental Builders", type: "Apartments and individual homes", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "United Builders", type: "Government buildings, hydropower and private banks", imgId: "1486325212027-8081e485255e" },
+  { name: "Mahadev Khimti Nirman Sewa", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "The Comfort Housing", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Brilliant Developers", type: "High-rise commercial buildings", imgId: "1486325212027-8081e485255e" },
+  { name: "Kalika Construction Pvt. Ltd.", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "CE Construction Pvt. Ltd. / CD Developers", type: "High-rise apartments and hospitals", imgId: "1486325212027-8081e485255e" },
+  { name: "Rabina Construction Pvt. Ltd.", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Lama Construction Pvt. Ltd.", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Himal Hydro General Construction", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Rasuwa Construction Company", type: "Roads, hospitals and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "City Scape", type: "Shopping complex and apartments", imgId: "1486325212027-8081e485255e" },
+  { name: "Soltee City", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Platinum Developers", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Madhya Pahadi Road Project", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Subedi Hira Namita JV", type: "Madhya Pahadi Road Project — roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Classic Developers", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Clean Infrastructure", type: "High-rise building", imgId: "1486325212027-8081e485255e" },
+  { name: "Naydi Group", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "China Hunan (Ilam Road Project)", type: "Road project", imgId: "1503387762-592deb58ef4e" },
+  { name: "Baba Enterprises (Kulekhani Project)", type: "Hydropower dam", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Perera Nirman Sewa", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Tundi Construction", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Bajra Guru Construction", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "CG Properties Ltd.", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Elite Construction", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Golden Goods Construction", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "PS Construction", type: "Roads, bridges and complexes", imgId: "1486325212027-8081e485255e" },
+  { name: "Shayambhu M.B. J.V.", type: "Hospitals and buildings", imgId: "1486325212027-8081e485255e" },
+  { name: "Sharma and Company", type: "Hospitals, buildings and bridges", imgId: "1486325212027-8081e485255e" },
+  { name: "Nepal Adarsha Nirman Company", type: "Buildings and roads", imgId: "1503387762-592deb58ef4e" },
+  { name: "Himalayan Builders", type: "Government buildings", imgId: "1486325212027-8081e485255e" },
+  { name: "Prime Hydro", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Sailung Nirman Sewa", type: "Hospitals, roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Diwa Nirman Sewa", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Araniko Nirman Company", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Sunkoshi Construction", type: "Hospitals and colleges", imgId: "1486325212027-8081e485255e" },
+  { name: "Icomm Tele Limited, India", type: "220 kV power project", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Beni Hydropower Project Pvt. Ltd.", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Ank YP Tundi JV", type: "Bridge", imgId: "1503387762-592deb58ef4e" },
+  { name: "Padma Colony", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "National Estate Builders Co. Pvt. Ltd.", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Dolakha Nirman Co. Pvt. Ltd.", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "MAW Ready Mix Concrete Pvt. Ltd.", type: "Ready-mix concrete", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Royal Construction Co. Pvt. Ltd.", type: "NEA transformer line", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "High Himalayan Hydro Construction Pvt. Ltd.", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Kankai International Builders Pvt. Ltd.", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Panchanya Ready Mix", type: "Ready-mix concrete", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Pappu Nepal Pragati JV", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Amar Ank Surya JV", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Lama Goldan Aaiko JV", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Bkoi Sky Bangalamukhe JV", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Subedi Nirman Sewa Pvt. Ltd.", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "Awale Builders", type: "Government building", imgId: "1486325212027-8081e485255e" },
+  { name: "APM Construction", type: "High-rise hotel", imgId: "1486325212027-8081e485255e" },
+  { name: "Om Sai Ram Construction Pvt. Ltd.", type: "Buildings", imgId: "1486325212027-8081e485255e" },
+  { name: "Adrisiya Nirman Sewa Pvt. Ltd.", type: "Complex", imgId: "1486325212027-8081e485255e" },
+  { name: "Shah Engineering Construction", type: "Hospitals and health posts", imgId: "1486325212027-8081e485255e" },
+  { name: "Tulsi Bhakta Construction", type: "Colleges and schools", imgId: "1486325212027-8081e485255e" },
+  { name: "Astra Development Network Pvt. Ltd.", type: "High-rise apartment", imgId: "1545324418-cc1a3fa10c00" },
+  { name: "BP Bahadur JV", type: "Road project", imgId: "1503387762-592deb58ef4e" },
+  { name: "Baidhee Construction", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Jaypu Construction", type: "High-rise shopping complex", imgId: "1486325212027-8081e485255e" },
+  { name: "Marushing Sitaka", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "MG Construction", type: "Road project", imgId: "1503387762-592deb58ef4e" },
+  { name: "Nilgiri Nirman Sewa", type: "Roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Sajha Bhandar Ltd.", type: "Government outlet", imgId: "1486325212027-8081e485255e" },
+  { name: "Himali Nirman Sewa", type: "Commercial complex", imgId: "1486325212027-8081e485255e" },
+  { name: "Santi Nirman Sewa", type: "Bridge project", imgId: "1503387762-592deb58ef4e" },
+  { name: "Con-tech Nepal", type: "High-rise commercial complex", imgId: "1486325212027-8081e485255e" },
+  { name: "Mudvari and Joshi Construction Pvt. Ltd.", type: "Transmission line", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Green Life Energy", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Ali LTB JV", type: "220 kV power project", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "Mila Land Developer (Bastukala Paramarsha)", type: "High-rise shopping complex", imgId: "1486325212027-8081e485255e" },
+  { name: "Beni Hydro", type: "Hydropower", imgId: "1581091226825-a6a2a5aee158" },
+  { name: "ANK Construction", type: "Colleges, roads and bridges", imgId: "1503387762-592deb58ef4e" },
+  { name: "Deauti Construction / Rajdhani Construction", type: "Medical college", imgId: "1486325212027-8081e485255e" },
+  { name: "Lumbani Builders", type: "Bridge", imgId: "1503387762-592deb58ef4e" },
+  { name: "Gauri Parvati Nirman Sewa Pvt. Ltd.", type: "Roads", imgId: "1503387762-592deb58ef4e" },
+  { name: "M.B. Construction", type: "Hospital", imgId: "1486325212027-8081e485255e" },
+  { name: "R.J. Construction", type: "School and resort", imgId: "1486325212027-8081e485255e" },
+  { name: "SAP Dhulikhel JV", type: "Bridge", imgId: "1503387762-592deb58ef4e" },
 ];
 
 // NEWS: titles and dates are real (from maruticements.com/news). Nepali translations and excerpts are added for bilingual presentation.
@@ -93,21 +180,23 @@ const BLOGS = [
 ];
 
 const TIMELINE_EVENTS = [
-  { year: "2010", title: "स्थापना", titleEn: "Foundation", desc: "मारुती सिमेन्ट्स लिमिटेडको स्थापना चन्द्रउदयपुर, सिरहामा भयो।" },
-  { year: "2012", title: "उत्पादन शुरू", titleEn: "Production Begins", desc: "पहिलो ब्याच OPC सिमेन्ट उत्पादन सफलतापूर्वक सम्पन्न भयो।" },
-  { year: "2015", title: "ISO प्रमाणपत्र", titleEn: "ISO 9001 Certified", desc: "ISO 9001:2015 गुणस्तर व्यवस्थापन प्रमाणपत्र प्राप्त भयो।" },
-  { year: "2018", title: "विस्तार", titleEn: "Capacity Expansion", desc: "उत्पादन क्षमता दोब्बर गरी बजारमा आपूर्ति बढाइयो।" },
-  { year: "2020", title: "पर्यावरण प्रमाणपत्र", titleEn: "ISO 14001 Certified", desc: "ISO 14001:2015 वातावरणीय व्यवस्थापन प्रमाणपत्र प्राप्त भयो।" },
-  { year: "2025", title: "एक दशक", titleEn: "A Decade of Trust", desc: "विश्वासको एक दशक पूरा — हजारौं सन्तुष्ट ग्राहक र दुई सय भन्दा बढी परियोजना।" },
+  { year: "2005", title: "निर्माणको सुरुवात", titleEn: "Groundwork Begins", desc: "मारुती सिमेन्टको जग निर्माणको काम सुरु भयो।" },
+  { year: "1 Sep 2009", title: "पहिलो उत्पादन", titleEn: "First Cement Bag", desc: "उत्पादनबाट निस्किएको पहिलो सिमेन्टको बोरा।" },
+  { year: "Late 2009", title: "१० लाख बोरा बिक्री", titleEn: "One Million Bags Sold", desc: "उत्पादन सुरु भएको तीन महिनाभित्र एक मिलियन सिमेन्टका बोरा बिक्री भए।" },
+  { year: "2017", title: "प्लान्ट र उत्पादन विस्तार", titleEn: "Plant and Product Expansion", desc: "अन्य प्लान्ट र सिमेन्टका प्रकारहरू थपिए।" },
+  { year: "6 Sep 2018", title: "ISO प्रमाणपत्र", titleEn: "ISO Certification", desc: "ISO प्रमाणपत्र प्रदान गरियो। प्रमाणपत्रको मानक र दायरा कम्पनीबाट पुष्टि हुन बाँकी छ।" },
+  { year: "Date to be confirmed", title: "हरित प्रमाणपत्र", titleEn: "Green Certification", desc: "हरित प्रमाणपत्र प्राप्त भएको मिति उपलब्ध छैन; कम्पनीबाट पुष्टि हुन बाँकी छ।" },
 ];
 
 const LEADERSHIP = [
-  { name: "Ramesh Kumar Sharma", role: "Chairman", roleNp: "अध्यक्ष", initial: "R" },
-  { name: "Sunita Agarwal", role: "Chief Executive Officer", roleNp: "प्रमुख कार्यकारी अधिकृत", initial: "S" },
-  { name: "Bikash Gupta", role: "Chief Financial Officer", roleNp: "मुख्य वित्त अधिकारी", initial: "B" },
-  { name: "Priya Thapa", role: "Head of Operations", roleNp: "सञ्चालन प्रमुख", initial: "P" },
-  { name: "Deepak Rana", role: "Chief Engineer", roleNp: "प्रमुख इन्जिनियर", initial: "D" },
-  { name: "Sita Devi Jha", role: "Marketing Director", roleNp: "विपणन निर्देशक", initial: "S" },
+  { name: "Anuj Rathi", role: "Chairman", roleNp: "अध्यक्ष", initial: "A" },
+  { name: "Anand Nepal", role: "Chief Executive Officer", roleNp: "प्रमुख कार्यकारी अधिकृत", initial: "A" },
+  { name: "Netra Kumar Shrestha", role: "Chief Financial Officer", roleNp: "मुख्य वित्त अधिकारी", initial: "N" },
+  { name: "A. Sunil Kumar Khemka", role: "Board Member", roleNp: "सञ्चालक समिति सदस्य", initial: "S" },
+  { name: "Dinbandhu Agrawal", role: "Board Member", roleNp: "सञ्चालक समिति सदस्य", initial: "D" },
+  { name: "Sahayu Goyal", role: "Board Member", roleNp: "सञ्चालक समिति सदस्य", initial: "S" },
+  { name: "Sharad Goel", role: "Board Member", roleNp: "सञ्चालक समिति सदस्य", initial: "S" },
+  { name: "Samjhana Shrestha", role: "Independent Director", roleNp: "स्वतन्त्र सञ्चालक", initial: "S" },
 ];
 
 // CSR: all 4 activities are real events from maruticements.com/news. Years marked "—" are undated on the source site.
@@ -151,12 +240,11 @@ function IntroScreen({ onComplete }: { onComplete: () => void }) {
       >
         <div className="absolute inset-0 border-4" style={{ borderColor: "#d4a017" }} />
         <div className="absolute inset-3 border" style={{ borderColor: "rgba(212,160,23,0.35)" }} />
-        <span
-          className="relative text-white text-6xl font-bold select-none"
-          style={{ fontFamily: FONT_DISPLAY, lineHeight: 1 }}
-        >
-          M
-        </span>
+        <img
+          src={`${MARUTI_ASSETS}logo-white.png`}
+          alt="Maruti Cement logo"
+          className="relative w-24 h-24 object-cover bg-white p-1"
+        />
       </motion.div>
 
       {/* Name */}
@@ -240,7 +328,7 @@ function Navbar({ currentPage, navigate }: { currentPage: Page; navigate: (p: Pa
               className="flex items-center justify-center border-2"
               style={{ width: 40, height: 40, backgroundColor: "#b71c1c", borderColor: "#d4a017" }}
             >
-              <span className="text-white font-bold text-xl" style={{ fontFamily: FONT_DISPLAY }}>M</span>
+              <img src={`${MARUTI_ASSETS}logo.png`} alt="Maruti Cement" className="w-9 h-9 object-contain" />
             </div>
             <div className="text-left leading-tight">
               <div
@@ -386,6 +474,11 @@ function HeroSection({ navigate }: { navigate: (p: Page) => void }) {
         />
         <div className="absolute inset-0" style={{ backgroundColor: "rgba(183,28,28,0.15)", mixBlendMode: "multiply" }} />
       </div>
+      <img
+        src={`${MARUTI_ASSETS}number-one-badge.png`}
+        alt="Maruti Nepal No. 1 badge"
+        className="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2 w-40 xl:w-52 max-h-[34vh] object-contain drop-shadow-xl"
+      />
 
       <div className="relative max-w-[1320px] mx-auto px-4 md:px-8 pt-28 pb-36 w-full">
         <div className="max-w-2xl xl:max-w-3xl">
@@ -573,19 +666,28 @@ function ProductsSection() {
       code: "OPC",
       name: "Ordinary Portland Cement",
       nameNp: "अर्डिनरी पोर्टल्यान्ड सिमेन्ट",
-      specs: ["53 Grade Strength", "IS 12269:2013 Compliant", "Rapid early strength gain"],
+      specs: ["43 Grade", "50 kg bag"],
       accent: "#b71c1c",
       bg: "#b71c1c",
       textBg: "#0f1923",
     },
     {
-      code: "PPC",
-      name: "Portland Pozzolana Cement",
-      nameNp: "पोर्टल्यान्ड पोज्जोलाना सिमेन्ट",
-      specs: ["Eco-friendly composition", "Long-term durability", "Reduced heat of hydration"],
+      code: "PPC I",
+      name: "Portland Pozzolana Cement — Type 1",
+      nameNp: "पोर्टल्यान्ड पोज्जोलाना सिमेन्ट — टाइप १",
+      specs: ["50 kg bag"],
       accent: "#d4a017",
       bg: "#d4a017",
       textBg: "#0f1923",
+    },
+    {
+      code: "PPC II",
+      name: "Portland Pozzolana Cement — Type 2",
+      nameNp: "पोर्टल्यान्ड पोज्जोलाना सिमेन्ट — टाइप २",
+      specs: ["50 kg bag"],
+      accent: "#b71c1c",
+      bg: "#0f1923",
+      textBg: "#fff",
     },
   ];
 
@@ -630,8 +732,9 @@ function ProductsSection() {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = p.accent; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#e5e7eb"; }}
               >
-                <div className="flex items-center justify-center py-10" style={{ backgroundColor: p.bg }}>
-                  <span className="text-4xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: p.code === "OPC" ? "#fff" : "#0f1923" }}>{p.code}</span>
+                <div className="relative flex items-center justify-center h-40 bg-white">
+                  <img src={`${MARUTI_ASSETS}cement-bags.png`} alt="Maruti Cement product bags" className="h-full w-full object-contain" />
+                  <span className="absolute bottom-3 right-3 text-xs font-bold px-3 py-1" style={{ fontFamily: FONT_DISPLAY, color: p.bg === "#d4a017" ? "#0f1923" : "#fff", backgroundColor: p.bg }}>{p.code}</span>
                 </div>
                 <div className="p-7">
                   <h3 className="font-bold text-lg mb-0.5" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>{p.name}</h3>
@@ -667,16 +770,21 @@ function AboutStripSection({ navigate }: { navigate: (p: Page) => void }) {
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-24 h-24 border-4 z-0" style={{ borderColor: "#d4a017" }} />
             <img
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop&auto=format"
-              alt="Maruti Cements factory"
+              src={`${MARUTI_ASSETS}cement-bags.png`}
+              alt="Maruti Cement product bags"
               className="relative w-full object-cover aspect-[4/3] z-[1]"
+            />
+            <img
+              src={`${MARUTI_ASSETS}strength-shield.png`}
+              alt="Maruti cement strength shield"
+              className="absolute top-3 right-3 z-[2] h-24 w-16 object-contain drop-shadow"
             />
             <div
               className="absolute -bottom-6 -right-6 p-8 z-[2]"
               style={{ backgroundColor: "#b71c1c" }}
             >
-              <div className="text-4xl font-bold text-white" style={{ fontFamily: FONT_DISPLAY }}>10+</div>
-              <div className="text-sm text-white/70 mt-0.5">Years of Excellence</div>
+              <div className="text-4xl font-bold text-white" style={{ fontFamily: FONT_DISPLAY }}>20+</div>
+              <div className="text-sm text-white/70 mt-0.5">Years of Experience</div>
               <div className="text-sm mt-1" style={{ fontFamily: FONT_NEPALI, color: "#d4a017" }}>वर्षको उत्कृष्टता</div>
             </div>
           </div>
@@ -750,26 +858,15 @@ function ProjectsPreviewSection({ navigate }: { navigate: (p: Page) => void }) {
               onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#b71c1c"; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#f0f0f0"; }}
             >
-              <div className="relative h-52 bg-gray-200 overflow-hidden">
-                <img
-                  src={`https://images.unsplash.com/photo-${proj.imgId}?w=600&h=400&fit=crop&auto=format`}
-                  alt={proj.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+              <div className="relative h-36 bg-gray-50 overflow-hidden flex items-center justify-center">
+                <Building2 size={54} strokeWidth={1.2} style={{ color: "#d4a017" }} />
                 <div className="absolute top-4 left-4 text-white text-xs px-3 py-1 uppercase tracking-wide font-bold" style={{ backgroundColor: "#b71c1c", fontFamily: FONT_DISPLAY }}>
                   {proj.type}
                 </div>
               </div>
               <div className="p-6">
                 <h3 className="font-bold text-lg mb-2" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>{proj.name}</h3>
-                <div className="flex items-center gap-1.5 text-sm" style={{ color: "#6b7280" }}>
-                  <MapPin size={13} />
-                  <span style={{ fontFamily: FONT_NEPALI }}>{proj.location}, Nepal</span>
-                </div>
-                <div className="flex items-center gap-1.5 text-xs mt-1" style={{ color: "#9ca3af" }}>
-                  <Calendar size={12} />
-                  <span style={{ fontFamily: FONT_DISPLAY }}>{proj.year}</span>
-                </div>
+                <p className="text-sm" style={{ color: "#6b7280" }}>{proj.type}</p>
               </div>
             </motion.div>
           ))}
@@ -1056,25 +1153,15 @@ function ProjectsPage() {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#b71c1c"; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#f0f0f0"; }}
               >
-                <div className="relative h-52 bg-gray-200 overflow-hidden group">
-                  <img
-                    src={`https://images.unsplash.com/photo-${proj.imgId}?w=600&h=400&fit=crop&auto=format`}
-                    alt={proj.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                <div className="relative h-28 bg-gray-50 overflow-hidden flex items-center justify-center">
+                  <Building2 size={42} strokeWidth={1.2} style={{ color: "#d4a017" }} />
                   <div className="absolute top-4 left-4 text-white text-xs px-3 py-1 uppercase tracking-wide font-bold" style={{ backgroundColor: "#b71c1c", fontFamily: FONT_DISPLAY }}>
                     {proj.type}
                   </div>
-                  <div className="absolute top-4 right-4 text-white text-xs px-3 py-1" style={{ backgroundColor: "rgba(0,0,0,0.55)", fontFamily: FONT_DISPLAY }}>
-                    {proj.year}
-                  </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="font-bold text-lg mb-2" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>{proj.name}</h3>
-                  <div className="flex items-center gap-1.5 text-sm" style={{ color: "#6b7280" }}>
-                    <MapPin size={13} style={{ flexShrink: 0 }} />
-                    <span style={{ fontFamily: FONT_NEPALI }}>{proj.location}, Nepal</span>
-                  </div>
+                  <h3 className="font-bold text-lg" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>{proj.name}</h3>
+                  <p className="text-sm mt-1" style={{ color: "#6b7280" }}>{proj.type}</p>
                 </div>
               </motion.div>
             ))}
@@ -1089,9 +1176,9 @@ function ProjectsPage() {
 
 function CertificatesPage() {
   const certs = [
-    { code: "ISO 9001:2015", title: "Quality Management System", titleNp: "गुणस्तर व्यवस्थापन प्रणाली", body: "Bureau Veritas Certification", year: "2015" },
-    { code: "ISO 14001:2015", title: "Environmental Management System", titleNp: "वातावरणीय व्यवस्थापन प्रणाली", body: "Bureau Veritas Certification", year: "2020" },
-    { code: "NS Certified", title: "Nepal Standards Certification", titleNp: "नेपाल मानक प्रमाणपत्र", body: "Nepal Bureau of Standards & Metrology", year: "2012" },
+    { code: "ISO Certification", title: "ISO Certificate", titleNp: "आईएसओ प्रमाणपत्र", body: "Date supplied: 6 September 2018; certificate standard to confirm", year: "6 Sep 2018" },
+    { code: "NS Certified", title: "Nepal Standards Certification", titleNp: "नेपाल मानक प्रमाणपत्र", body: "Award date to be confirmed", year: "Date to be confirmed" },
+    { code: "Green Certification", title: "Environmental Recognition", titleNp: "हरित प्रमाणपत्र", body: "Award date to be confirmed", year: "Date to be confirmed" },
   ];
 
   return (
@@ -1122,11 +1209,16 @@ function CertificatesPage() {
                 <h3 className="font-bold mb-1" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>{cert.title}</h3>
                 <p className="text-sm mb-3" style={{ fontFamily: FONT_NEPALI, color: "#6b7280" }}>{cert.titleNp}</p>
                 <p className="text-xs mb-1" style={{ fontFamily: FONT_BODY, color: "#9ca3af" }}>{cert.body}</p>
-                <p className="text-xs font-bold uppercase tracking-widest" style={{ fontFamily: FONT_DISPLAY, color: "#d4a017" }}>Since {cert.year}</p>
+                <p className="text-xs font-bold uppercase tracking-widest" style={{ fontFamily: FONT_DISPLAY, color: "#d4a017" }}>{cert.year}</p>
               </motion.div>
             ))}
           </div>
           <div className="p-10 border-l-4" style={{ borderColor: "#b71c1c", backgroundColor: "#f8f8f8" }}>
+            <img
+              src={`${MARUTI_ASSETS}certification-marks.png`}
+              alt="Certification and standards marks supplied with Maruti graphics"
+              className="w-full max-w-2xl mx-auto max-h-32 object-contain mb-7"
+            />
             <h3 className="font-bold text-xl mb-3" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>
               Our Commitment to Quality / गुणस्तरप्रति हाम्रो प्रतिबद्धता
             </h3>
@@ -1143,15 +1235,6 @@ function CertificatesPage() {
 // ─── Investor Relations Page ──────────────────────────────────────────────────
 
 function InvestorPage() {
-  const docs = [
-    "Annual Report 2081/82 (2024/25)",
-    "Annual Report 2080/81 (2023/24)",
-    "Quarterly Report Q3 FY 2081/82",
-    "Audited Financial Statements 2080/81",
-    "Board of Directors Report",
-    "IPO Prospectus",
-  ];
-
   return (
     <>
       <PageHero title="Investor Relations" titleNp="लगानीकर्ता सम्बन्ध" subtitle="Financial Reports, Disclosures & Shareholder Information" dark />
@@ -1159,38 +1242,20 @@ function InvestorPage() {
         <div className="max-w-[1320px] mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              <h2 className="font-bold mb-8" style={{ fontFamily: FONT_DISPLAY, fontSize: "1.8rem", color: "#0f1923" }}>
-                Financial Documents / वित्तीय कागजातहरू
-              </h2>
-              <div className="space-y-3">
-                {docs.map((doc, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.07 }}
-                    className="flex items-center gap-5 p-5 border cursor-pointer group transition-all duration-200"
-                    style={{ borderColor: "#e5e7eb" }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#b71c1c"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 16px rgba(183,28,28,0.08)"; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#e5e7eb"; (e.currentTarget as HTMLDivElement).style.boxShadow = ""; }}
-                  >
-                    <div className="flex-shrink-0 flex items-center justify-center" style={{ width: 44, height: 44, backgroundColor: "#b71c1c" }}>
-                      <Download size={18} className="text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-bold" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>{doc}</h3>
-                      <p className="text-xs mt-0.5" style={{ fontFamily: FONT_BODY, color: "#9ca3af" }}>PDF Document</p>
-                    </div>
-                    <ArrowRight size={16} style={{ color: "#d1d5db", flexShrink: 0 }} className="group-hover:text-[#b71c1c] transition-colors" />
-                  </motion.div>
-                ))}
+              <div className="p-8 border-l-4" style={{ borderColor: "#d4a017", backgroundColor: "#f8f8f8" }}>
+                <h2 className="font-bold text-2xl mb-3" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>
+                  Investor information
+                </h2>
+                <p className="text-sm leading-relaxed" style={{ fontFamily: FONT_BODY, color: "#6b7280" }}>
+                  Maruti Cements Ltd. plans to go public through an IPO in the near future. IPO timing, offer terms, financial reports and allotment information have not been provided for publication yet.
+                </p>
               </div>
             </div>
             <div>
               <div className="p-8 border-t-4" style={{ borderColor: "#b71c1c", backgroundColor: "#f8f8f8" }}>
                 <h3 className="font-bold text-xl mb-5" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>Shareholder Info</h3>
                 <div className="space-y-4">
-                  {[["Stock Symbol", "MCL"], ["Exchange", "NEPSE"], ["Sector", "Manufacturing"], ["IPO Year", "2024"]].map(([k, v]) => (
+                  {[["Company", "Maruti Cements Ltd."], ["Sector", "Cement manufacturing"], ["IPO Status", "Planned; timing and terms not announced"]].map(([k, v]) => (
                     <div key={k} className="flex justify-between border-b pb-3" style={{ borderColor: "#e5e7eb" }}>
                       <span className="text-xs uppercase tracking-wide" style={{ fontFamily: FONT_DISPLAY, color: "#9ca3af" }}>{k}</span>
                       <span className="font-bold text-sm" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>{v}</span>
@@ -1251,7 +1316,7 @@ function CSRPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {["सामुदायिक विकास", "वातावरण संरक्षण", "कर्मचारी कल्याण"].map((t, i) => (
               <div key={i} className="text-center p-8" style={{ backgroundColor: i === 1 ? "#b71c1c" : "#0f1923" }}>
-                <div className="text-3xl font-bold mb-2" style={{ fontFamily: FONT_DISPLAY, color: "#d4a017" }}>{["50+", "10K+", "100%"][i]}</div>
+                <div className="text-xl font-bold mb-2" style={{ fontFamily: FONT_DISPLAY, color: "#d4a017" }}>{["Community", "Environment", "People"][i]}</div>
                 <div className="text-white font-bold" style={{ fontFamily: FONT_NEPALI }}>{t}</div>
                 <div className="text-xs mt-1 uppercase tracking-wide" style={{ fontFamily: FONT_DISPLAY, color: "rgba(255,255,255,0.4)" }}>
                   {["Community Projects", "Trees Planted", "Employee Benefits"][i]}
@@ -1476,16 +1541,6 @@ function ContactPage() {
 // ─── IPO Page ─────────────────────────────────────────────────────────────────
 
 function IPOPage() {
-  const [boid, setBoid] = useState("");
-  const [citizen, setCitizen] = useState("");
-  const [checked, setChecked] = useState(false);
-
-  const handleCheck = (e: React.FormEvent) => {
-    e.preventDefault();
-    setChecked(true);
-    setTimeout(() => setChecked(false), 5000);
-  };
-
   return (
     <>
       <PageHero title="IPO Allotment Result" titleNp="आईपीओ आवंटन नतिजा" subtitle="Check Your Share Allotment Status" dark />
@@ -1493,59 +1548,14 @@ function IPOPage() {
         <div className="max-w-[1320px] mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="font-bold mb-6" style={{ fontFamily: FONT_DISPLAY, fontSize: "1.9rem", color: "#0f1923" }}>
-                आफ्नो आवंटन स्थिति जाँच गर्नुहोस्
-              </h2>
-              <p className="text-sm leading-relaxed mb-8" style={{ fontFamily: FONT_NEPALI, color: "#6b7280" }}>
-                आफ्नो BOID नम्बर र नागरिकता नम्बर प्रविष्ट गरी मारुती सिमेन्ट्स लिमिटेडको IPO आवंटन नतिजा हेर्नुहोस्।
-              </p>
-              {checked ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-8 border-l-4"
-                  style={{ borderColor: "#d4a017", backgroundColor: "#fefdf5" }}
-                >
-                  <p className="font-bold text-lg mb-1" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>Result Checked</p>
-                  <p className="text-sm" style={{ fontFamily: FONT_NEPALI, color: "#6b7280" }}>नतिजाको लागि आधिकारिक NEPSE पोर्टल वा तपाईंको DP को वेबसाइट जाँच गर्नुहोस्।</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleCheck} className="space-y-4">
-                  <div>
-                    <label className="block mb-1.5 font-bold uppercase text-[11px] tracking-widest" style={{ fontFamily: FONT_DISPLAY, color: "#374151" }}>BOID / DP Number</label>
-                    <input
-                      value={boid}
-                      onChange={(e) => setBoid(e.target.value)}
-                      required
-                      className="w-full border px-4 py-3 text-sm focus:outline-none"
-                      style={{ borderColor: "#e5e7eb", fontFamily: FONT_BODY }}
-                      onFocus={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "#b71c1c"; }}
-                      onBlur={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "#e5e7eb"; }}
-                      placeholder="1300000000000000"
-                    />
-                  </div>
-                  <div>
-                    <label className="block mb-1.5 font-bold uppercase text-[11px] tracking-widest" style={{ fontFamily: FONT_DISPLAY, color: "#374151" }}>Citizenship No. / नागरिकता नम्बर</label>
-                    <input
-                      value={citizen}
-                      onChange={(e) => setCitizen(e.target.value)}
-                      required
-                      className="w-full border px-4 py-3 text-sm focus:outline-none"
-                      style={{ borderColor: "#e5e7eb", fontFamily: FONT_BODY }}
-                      onFocus={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "#b71c1c"; }}
-                      onBlur={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "#e5e7eb"; }}
-                      placeholder="Citizenship number"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full text-white font-bold uppercase tracking-widest py-4"
-                    style={{ fontFamily: FONT_DISPLAY, backgroundColor: "#b71c1c" }}
-                  >
-                    Check Result / नतिजा हेर्नुहोस्
-                  </button>
-                </form>
-              )}
+              <div className="p-8 border-l-4" style={{ borderColor: "#d4a017", backgroundColor: "#f8f8f8" }}>
+                <h2 className="font-bold text-2xl mb-3" style={{ fontFamily: FONT_DISPLAY, color: "#0f1923" }}>
+                  No allotment results published
+                </h2>
+                <p className="text-sm leading-relaxed" style={{ fontFamily: FONT_BODY, color: "#6b7280" }}>
+                  Maruti Cements Ltd. plans to go public through an IPO in the near future. An IPO date, allotment result and official lookup service have not been provided. Please do not enter personal identification details here.
+                </p>
+              </div>
             </div>
             <div className="space-y-5">
               <div className="p-8 border-l-4" style={{ borderColor: "#d4a017", backgroundColor: "#f8f8f8" }}>
@@ -1733,13 +1743,8 @@ function Footer({ navigate }: { navigate: (p: Page) => void }) {
           {/* Brand */}
           <div>
             <button onClick={() => go("home")} className="flex items-center gap-3 mb-6">
-              <div className="flex items-center justify-center border-2" style={{ width: 44, height: 44, backgroundColor: "#b71c1c", borderColor: "#d4a017" }}>
-                <span className="text-white font-bold text-xl" style={{ fontFamily: FONT_DISPLAY }}>M</span>
-              </div>
-              <div>
-                <div className="font-bold tracking-wider uppercase text-sm text-white" style={{ fontFamily: FONT_DISPLAY }}>Maruti Cements</div>
-                <div className="text-[10px] tracking-widest font-semibold" style={{ color: "#d4a017" }}>MCL</div>
-              </div>
+              <img src={`${MARUTI_ASSETS}logo-full.png`} alt="Maruti Cements Ltd." className="w-24 h-16 object-cover bg-white" />
+              <span className="text-[10px] tracking-widest font-semibold" style={{ color: "#d4a017" }}>MCL</span>
             </button>
             <p className="text-lg mb-1" style={{ fontFamily: FONT_NEPALI, color: "#d4a017" }}>विश्वासको एक दशक</p>
             <p className="text-sm leading-relaxed mb-6" style={{ fontFamily: FONT_BODY, color: "rgba(255,255,255,0.4)" }}>

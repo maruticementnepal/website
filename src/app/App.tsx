@@ -222,13 +222,7 @@ function IntroScreen({ onComplete }: { onComplete: () => void }) {
       exit={{ y: "-100%", transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } }}
     >
       {/* Diagonal stripe texture */}
-      <div
-        className="absolute inset-0 opacity-[0.07] pointer-events-none"
-        style={{
-          backgroundImage: "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
-          backgroundSize: "28px 28px",
-        }}
-      />
+      
 
       {/* Logo mark */}
       <motion.div

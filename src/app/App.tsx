@@ -238,10 +238,10 @@ function IntroScreen({ onComplete }: { onComplete: () => void }) {
         className="relative mb-10 flex items-center justify-center"
         style={{ width: 112, height: 112 }}
       >
-        <div className="absolute inset-0 border-4" style={{ borderColor: "#d4a017" }} />
+        <div className="absolute inset-0" />
         <div className="absolute inset-3 border" style={{ borderColor: "rgba(212,160,23,0.35)" }} />
         <img
-          src={`${MARUTI_ASSETS}logo-white.png`}
+          src={`${MARUTI_ASSETS}logo-full.png`}
           alt="Maruti Cement logo"
           className="relative w-24 h-24 object-cover bg-white p-1"
         />
